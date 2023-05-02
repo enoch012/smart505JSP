@@ -54,7 +54,7 @@ public class BoardDao extends JDBConnect{
     BoardDto board = new BoardDto();
 
     String sql = "SELECT num, title, content, id, postdate, visitcount ";
-    sql += "FROM board ";
+    sql += "FROM board ORDER BY num DESC"; // 숫자 내림차순으로 출력하기 위한 구문
     sql += "WHERE num = " + postNum + " ";
 
     try{
