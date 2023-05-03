@@ -9,6 +9,8 @@
 
 <%@ page import="com.bitc.jsp_board_model1.BoardDao" %>
 <%@ page import="com.bitc.jsp_board_model1.BoardDto" %>
+<%--세션 확인 로그인 된 사람만 이용할 수 있도록 함--%>
+<%@ include file="IsLoggedIn.jsp"%>
 
 <%
   // 이전 페이지에서 전달한 현재 글번호 가져오기
@@ -37,16 +39,9 @@ BoardDto board = dao.selectBoard(postNum);
           crossorigin="anonymous"></script>
 </head>
 <body>
-<header class="mb-4">
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <ul class="navbar-nav">
-      <li class="nav-link"><a href="#" class="nav-link">메뉴1</a></li>
-    </ul>
-  </nav>
-  <div class="container my-4 py-5 bg-secondary bg-opacity-25">
-    <h1 class="text-center">Model1 방식 게시판 글 수정</h1>
-  </div>
-</header>
+
+<%@ include file="Header.jsp"%>
+
 <main class="container my-4 p-0">
   <form action="UpdateProcess.jsp" method="post">
     <%--글 번호--%>
@@ -86,8 +81,6 @@ BoardDto board = dao.selectBoard(postNum);
     </div>
   </form>
 </main>
-<footer class="container-fluid my-5 p-5 border-top">
-  <p class="lead text-muted text-center">made by fullstack505</p>
-</footer>
+<%@ include file="Footer.jsp"%>
 </body>
 </html>

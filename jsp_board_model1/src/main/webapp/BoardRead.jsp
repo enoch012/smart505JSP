@@ -22,6 +22,12 @@
   BoardDto board = dao.selectBoard(postNum);
 
   dao.dbClose();
+
+  // 로그인이 적용 되는지 세션 확인용
+  String userId = (String) session.getAttribute("userId");
+  String userName = (String) session.getAttribute("userName");
+
+  String writerUser = board.getPostWriteUser(); // 작성자
 %>
 <!DOCTYPE html>
 <html>
@@ -61,16 +67,7 @@
   </script>
 </head>
 <body>
-<header class="mb-4">
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <ul class="navbar-nav">
-      <li class="nav-link"><a href="#" class="nav-link">메뉴1</a></li>
-    </ul>
-  </nav>
-  <div class="container my-4 py-5 bg-secondary bg-opacity-25">
-    <h1 class="text-center">Model1 방식 게시판 글 확인</h1>
-  </div>
-</header>
+<%@ include file="Header.jsp"%>
 <main class="container my-4 p-0">
   <%--글 번호, 글 제목--%>
   <div class="row my-3">
@@ -87,7 +84,7 @@
   <div class="row my-3">
     <div class="col-sm">
       <label for="post-write-user" class="form-label">글쓴이</label>
-      <input type="text" class="form-control" id="post-write-user" name="postWriteUser" value="<%=board.getPostWriteUser()%>" readonly>
+      <input type="text" class="form-control" id="post-write-user" name="postWriteUser" value="<%=writerUser%>" readonly>
     </div>
     <div class="col-sm">
       <label for="post-date" class="form-label">등록시간</label>
@@ -119,7 +116,11 @@
     <div class="col-sm d-flex justify-content-start">
       <button type="button" id="btn-list" class="btn btn-secondary float-start">목록</button>
     </div>
+
     <div class="col-sm d-flex justify-content-end">
+      <%
+        if (writerUser.equals(userId) == true){
+      %>
       <%-- 1. a 태그를 사용하여 BoardUpdate.jsp로 이동 --%>
         <%--<a href="BoardUpdate.jsp?postNum=<%=board.getPostNum()%>" class="btn btn-primary">수정</a>--%>
       <%--2. 자바스크립트를 사용하여 BoardUpdate.jsp로 이동---%>
@@ -136,12 +137,18 @@
       <%--<a href="DeleteProcess.jsp?postNum=<%=board.getPostNum()%>" class="btn btn-danger">삭제(방법 2번)</a>--%>
 
       <%-- 3. javascript 사용 방식(제일 깔끔함)--%>
-      <button type="button" id="btn-delete" class="btn btn-danger float-end" >삭제(방법 3번)</button>
+      <button type="button" id="btn-delete" class="btn btn-danger float-end" >삭제</button>
+      <%
+        } else {
+      %>
+      <div></div>
+      <%
+        }
+      %>
     </div>
+
   </div>
 </main>
-<footer class="container-fluid my-5 p-5 border-top">
-  <p class="lead text-muted text-center">made by fullstack505</p>
-</footer>
+<%@ include file="Footer.jsp"%>
 </body>
 </html>
