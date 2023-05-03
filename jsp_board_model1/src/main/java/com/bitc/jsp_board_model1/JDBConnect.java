@@ -40,6 +40,7 @@ public class JDBConnect {
       if(pstmt != null) { pstmt.close();}
       if(stmt != null) { stmt.close();}
       if(conn != null) { conn.close();}
+      System.out.println("데이터 베이스가 해제되었습니다.");
     }
     catch (Exception e){}
   }
