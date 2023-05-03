@@ -23,7 +23,8 @@
   BoardDto dto = new BoardDto();
   dto.setPostTitle(postTitle);
   // 세션 정보에 저장된 userId를 불러와서 사용해야함
-  dto.setPostWriteUser("testuser");  dto.setPostContent(postContent);
+  dto.setPostWriteUser(session.getAttribute("userId").toString());
+  dto.setPostContent(postContent);
 
 
 

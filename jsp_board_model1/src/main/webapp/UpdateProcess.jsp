@@ -8,6 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ page import="com.bitc.jsp_board_model1.BoardDto" %>
 <%@ page import="com.bitc.jsp_board_model1.BoardDao" %>
+
+<%-- 아무나 수정 못하도록 세션 확인 --%>
+<%@ include file="IsLoggedIn.jsp"%>
 <%
   request.setCharacterEncoding("UTF-8");
   // 이전 페이지에서 수정할 데이터 정보 가져오기

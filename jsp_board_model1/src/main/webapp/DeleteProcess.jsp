@@ -6,9 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<%@ page import="com.bitc.jsp_board_model1.BoardDto" %>
+
 <%@ page import="com.bitc.jsp_board_model1.BoardDao" %>
 
+<%-- 아무나 삭제 못하도록 세션 확인 --%>
+<%@ include file="IsLoggedIn.jsp"%>
 <%
   // 삭제할 글 번호를 가져옴
   int postNum = Integer.parseInt(request.getParameter("postNum"));
