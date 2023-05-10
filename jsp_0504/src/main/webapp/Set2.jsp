@@ -22,6 +22,7 @@
 </head>
 <body>
 <%
+  /* List 타입으로 생성했지만 내장 객체에 저장안함. 표현식으로만 출력 가능*/
   ArrayList<Person> pList = new ArrayList<Person>();
   pList.add(new Person("노아", 21));
   pList.add(new Person("유다", 30));
@@ -32,7 +33,8 @@
 %>
 
 <h4>List 컬렉션 이용하기</h4>
-<%-- 리스트를 변수명에 저장 --%>
+<%-- 리스트를 변수명에 저장, 내장 객체에 저장안한 변수(pList)는 표현식으로 써야한다. --%>
+<%-- 사실상 변수명 변경 --%>
 <c:set var="personList" value="<%=pList%>" scope="request" />
 <ul>
   <%-- 속성값을 읽어오는 명령어 다음 리스트 요소를 불러올 수 있다 --%>
