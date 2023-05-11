@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<booklist>
+  <book>
+    <name>우리가 얼굴을 찾을 때까지</name>
+    <author>C.S Lewis</author>
+    <price>19800</price>
+  </book>
+  <book>
+    <name>Tempest</name>
+    <author>William Shakespeare</author>
+    <price>20000</price>
+  </book>
+  <book>
+    <name>고양이를 찾아서</name>
+    <author>채채</author>
+    <price>15000</price>
+  </book>
+</booklist>
